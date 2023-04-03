@@ -8,7 +8,9 @@ function getRightCaptain() {
   let experience = []
 
   for (let i = 1; i < crew.length; i++) {
-    experience.push(crew[i].filter((el) => Number(el)).join(', '))
+    if (crew[i].includes('Капитан')) {
+      experience.push(crew[i].filter((el) => Number(el)).join(', '))
+    }
   }
 
   experience.sort((a, b) => b - a)
@@ -16,7 +18,7 @@ function getRightCaptain() {
   let mostExperiencedCrew = crew.find((el) => el.includes(experience[0])).join(', ')
   return mostExperiencedCrew
 }
-// console.log(getRightCaptain(crew));
+console.log(getRightCaptain(crew));
 
 //позволяет выбрать самого опытного врача среди женщин
 function getRightDoc() {
@@ -48,7 +50,7 @@ function getAllEngineer() {
 
   return mechanicsAll
 }
-console.log(getAllEngineer(crew));
+// console.log(getAllEngineer(crew));
 
 //Позволяет отобрать все марсоходы
 function getAllRover() {
