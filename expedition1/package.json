@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest spec/*[sS]pec.js -i"
+    "test": "jest spec/*[sS]pec.js -i",
+    "files": "node src/functions.js"
   },
   "keywords": [],
   "author": "",
