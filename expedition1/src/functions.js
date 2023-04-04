@@ -21,7 +21,7 @@ function getRightCaptain() {
   }
   return crew[iExp].join(', ')
 
-  //самое короткое решение
+  //короткое решение
   // let mostExperiencedCrew = crew.filter((el) => el.includes('Капитан')).sort((a, b) => +b[3] - +a[3])
   // return mostExperiencedCrew[0].join(', ')
 
@@ -73,8 +73,7 @@ function getAllEngineer() {
   return engineerAll
 
   //короткий способ
-  // let engineerAll = crew.filter((el) => el.includes('Бортмеханик')).map((el) => el.join(', '))
-  // return engineerAll
+  // return crew.filter((el) => el.includes('Бортмеханик')).map((el) => el.join(', '))
 }
 
 //Позволяет отобрать все марсоходы
@@ -113,19 +112,19 @@ function getRightRovers() {
 
 //позволяет выбрать ракету с максимальной дальностью полёта
 function getRightRocket() {
-  // let max = 0
-  // let rocketMax = 1
+  let max = 0
+  let rocketMax = 1
 
-  // for (let i = 1; i < rockets.length; i++) {
-  //   if (+rockets[i][2] > max) {
-  //     max = +rockets[i][2]
-  //     rocketMax = i
-  //   }
-  // }
-  // return rockets[rocketMax].join(', ')
+  for (let i = 1; i < rockets.length; i++) {
+    if (+rockets[i][2] > max) {
+      max = +rockets[i][2]
+      rocketMax = i
+    }
+  }
+  return rockets[rocketMax].join(', ')
 
   //короткий способ
-  return rockets.sort((a, b) => +b[2] - +a[2])[1].join(', ')
+  // return rockets.sort((a, b) => +b[2] - +a[2])[1].join(', ')
 }
 console.log(getRightRocket(rockets));
 
