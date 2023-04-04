@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const PATH = './src/data';
 
-const crew = fs.readFileSync(PATH + '/crew.txt', 'utf-8').split('\n');
+const crew = fs.readFileSync(PATH + '/crew.txt', 'utf-8').split('\n')
 
 
 let newCrew = [];
