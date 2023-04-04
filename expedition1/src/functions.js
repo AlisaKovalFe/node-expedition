@@ -126,7 +126,6 @@ function getRightRocket() {
   //короткий способ
   // return rockets.sort((a, b) => +b[2] - +a[2])[1].join(', ')
 }
-console.log(getRightRocket(rockets));
 
 module.exports = {
   getRightCaptain,
