@@ -7,24 +7,22 @@ const rockets = fs.readFileSync(PATH + '/rockets.txt', 'utf-8').split('\n').map(
 
 //позволяет выбрать самого опытного капитана
 function getRightCaptain() {
+  let mostExperiencedCrew = crew.filter((el) => el.includes('Капитан')).sort((a, b) => +b[3] - +a[3])
+  return mostExperiencedCrew[0].join(', ')
 
-  let exp = 0
-  let iExp = 1
+  //цикл
+  // let exp = 0
+  // let iExp = 1
 
-  for (let i = 1; i < crew.length; i++) {
-    if (crew[i].includes('Капитан')) {
-      if (+crew[i][3] > exp) {
-        exp = +crew[i][3]
-        iExp = i
-      }
-    }
-  }
-  return crew[iExp].join(', ')
-
-  //короткое решение
-  // let mostExperiencedCrew = crew.filter((el) => el.includes('Капитан')).sort((a, b) => +b[3] - +a[3])
-  // return mostExperiencedCrew[0].join(', ')
-
+  // for (let i = 1; i < crew.length; i++) {
+  //   if (crew[i].includes('Капитан')) {
+  //     if (+crew[i][3] > exp) {
+  //       exp = +crew[i][3]
+  //       iExp = i
+  //     }
+  //   }
+  // }
+  // return crew[iExp].join(', ')
   //мой изначальный код (оставлю на память в этой функции, решение громоздкое, но чуть более универслаьное)
   // let experience = []
   // for (let i = 1; i < crew.length; i++) {
@@ -42,89 +40,89 @@ function getRightCaptain() {
 
 //позволяет выбрать самого опытного врача среди женщин
 function getRightDoc() {
-  let exp = 0
-  let iExp = 1
+  let mostExperiencedCrew = crew.filter((el) => el.includes('ж') && el.includes('Врач')).sort((a, b) => +b[3] - +a[3])
+  return mostExperiencedCrew[0].join(', ')
 
-  for (let i = 1; i < crew.length; i++) {
-    if (crew[i].includes('ж') && crew[i].includes('Врач')) {
-      if (+crew[i][3] > exp) {
-        exp = +crew[i][3]
-        iExp = i
-      }
-    }
-  }
-  return crew[iExp].join(', ')
+  //цикл
+  // let exp = 0
+  // let iExp = 1
 
-  // короткий способ
-  // let mostExperiencedCrew = crew.filter((el) => el.includes('ж') && el.includes('Врач')).sort((a, b) => +b[3] - +a[3])
-  // return mostExperiencedCrew[0].join(', ')
+  // for (let i = 1; i < crew.length; i++) {
+  //   if (crew[i].includes('ж') && crew[i].includes('Врач')) {
+  //     if (+crew[i][3] > exp) {
+  //       exp = +crew[i][3]
+  //       iExp = i
+  //     }
+  //   }
+  // }
+  // return crew[iExp].join(', ')
 }
 
 //позволяет выбрать всех бортмехаников
 function getAllEngineer() {
+  return crew.filter((el) => el.includes('Бортмеханик')).map((el) => el.join(', '))
 
-  let engineerAll = []
+  // цикл
+  // let engineerAll = []
 
-  for (let i = 1; i < crew.length; i++) {
-    if (crew[i].includes('Бортмеханик')) {
-      engineerAll.push(crew[i].join(', '))
-    }
-  }
-  return engineerAll
-
-  //короткий способ
-  // return crew.filter((el) => el.includes('Бортмеханик')).map((el) => el.join(', '))
+  // for (let i = 1; i < crew.length; i++) {
+  //   if (crew[i].includes('Бортмеханик')) {
+  //     engineerAll.push(crew[i].join(', '))
+  //   }
+  // }
+  // return engineerAll
 }
 
 //Позволяет отобрать все марсоходы
 function getAllRover() {
-  let roverAll = []
+  return rovers.filter((el) => el.includes('марсоход')).map((el) => el.join(', '))
 
-  for (let i = 1; i < rovers.length; i++) {
-    if (rovers[i].includes('марсоход')) {
-      roverAll.push(rovers[i].join(', '))
-    }
-  }
-  return roverAll
+  //цикл
+  // let roverAll = []
 
-  //короткий способ
-  // return rovers.filter((el) => el.includes('марсоход')).map((el) => el.join(', '))
+  // for (let i = 1; i < rovers.length; i++) {
+  //   if (rovers[i].includes('марсоход')) {
+  //     roverAll.push(rovers[i].join(', '))
+  //   }
+  // }
+  // return roverAll
 }
 
 //позволяет выбрать только те марсоходы, которые смогут прослужить больше 3 лет
 function getRightRovers() {
-  let roversOlder3Years = []
   const expluataionTime = 3
+  return rovers.filter((el) => el.includes('марсоход') && el[2] > expluataionTime).map((el) => el.join(', '))
 
-  for (let i = 1; i < rovers.length; i++) {
-    if (rovers[i].includes('марсоход')) {
-      if (+rovers[i][2] > expluataionTime) {
-        roversOlder3Years.push(rovers[i].join(', '))
-      }
-    }
-  }
-  return roversOlder3Years
+  //цикл
+  // let roversOlder3Years = []
+  // const expluataionTime = 3
 
-  //короткий способ
-  // return rovers.filter((el) => el.includes('марсоход') && el[2] > expluataionTime).map((el) => el.join(', '))
+  // for (let i = 1; i < rovers.length; i++) {
+  //   if (rovers[i].includes('марсоход')) {
+  //     if (+rovers[i][2] > expluataionTime) {
+  //       roversOlder3Years.push(rovers[i].join(', '))
+  //     }
+  //   }
+  // }
+  // return roversOlder3Years
 }
 
 
 //позволяет выбрать ракету с максимальной дальностью полёта
 function getRightRocket() {
-  let max = 0
-  let rocketMax = 1
+  return rockets.sort((a, b) => +b[2] - +a[2])[1].join(', ')
 
-  for (let i = 1; i < rockets.length; i++) {
-    if (+rockets[i][2] > max) {
-      max = +rockets[i][2]
-      rocketMax = i
-    }
-  }
-  return rockets[rocketMax].join(', ')
+  //цикл
+  // let max = 0
+  // let rocketMax = 1
 
-  //короткий способ
-  // return rockets.sort((a, b) => +b[2] - +a[2])[1].join(', ')
+  // for (let i = 1; i < rockets.length; i++) {
+  //   if (+rockets[i][2] > max) {
+  //     max = +rockets[i][2]
+  //     rocketMax = i
+  //   }
+  // }
+  // return rockets[rocketMax].join(', ')
 }
 
 module.exports = {
